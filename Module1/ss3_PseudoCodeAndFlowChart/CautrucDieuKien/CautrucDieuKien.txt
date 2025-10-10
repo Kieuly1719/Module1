@@ -1,0 +1,20 @@
+Begin
+   Input Diem
+   IF Diem >= 75
+      Display "Loại A"
+   ELSE
+     IF Diem >= 60 AND Diem < 75:
+	Display "Loại B"
+     ELSE
+	IF Diem >= 45 AND Diem < 60:
+	   Display "Loại C"
+	ELSE
+	   IF Diem >= 35 AND Diem < 45:
+	      Display "Loại D"
+	   ELSE
+	      Display "Loại E"
+	   END IF
+	END IF
+      END IF
+    END IF
+End

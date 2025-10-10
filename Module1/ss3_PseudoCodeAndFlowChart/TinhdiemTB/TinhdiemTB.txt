@@ -1,0 +1,7 @@
+Begin
+	Input "Toan"
+	Input "Ly"
+	Input "Hoa"
+	DTB = (Toan + Ly + Hoa)/3
+	Display "DTB"
+End
