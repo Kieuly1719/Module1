@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .form-froup{
+            margin-bottom: 25px;
+        }
+        label,p{
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"]{
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .gender-options label{
+            font-size: 18px;
+            font-weight: bold;
+            display: inline;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        input[type="radio"]:checked + label{
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        button {
+            padding: 10px 20px; /* Khoảng cách bên trong nút */
+            font-size: 16px;
+            background-color: #f0f0f0; /* Màu nền xám nhạt */
+            border: 1px solid #ccc; /* Viền màu xám */
+            border-radius: 5px; /* Bo tròn góc */
+            cursor: pointer; /* Biểu tượng con trỏ khi di chuột vào */
+        }
+    </style>
+</head>
+<body>
+    <h2>Mô tả</h2>
+    <form action="http://demo.codegym.vn/6/registration_form/register.php" method="POST">
+        <div class="form-froup">
+            <label>Họ và tên:</label>
+            <input type="text" name="name"/>
+        </div>
+
+        <div class="form-froup">
+            <label>Email:</label>
+            <input type="email" name="email"/>
+        </div>
+
+        <div class="form-froup">
+            <label>Số điện thoại:</label>
+            <input type="number" name="phone"/>
+        </div>
+
+        <div class="form-froup">
+            <label>Giới tính:</label>
+            <div class="gender-options">
+                <input type="radio" name="gender" value="Nam" checked/> Nam
+                <input type="radio" name="gender" value="Nu"/> Nữ <br/>
+            </div>
+        </div>
+
+        <button type="submit">Đăng ký</button>
+    </form>
+</body>
+</html>

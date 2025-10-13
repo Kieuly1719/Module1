@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d5effe;
+        }
+
+        .form-container {
+            width: 500px;
+            margin: 40px auto;
+            background-color: #d5effe;
+            border: 1px solid #a3d7f7;
+            padding: 5px 20px 20px 20px;
+        }
+
+        .header_groups {
+            background-color: #ff4500;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            padding: 10px;
+            margin: 0 -15px 20px -15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        .label {
+            color: #0000ff;
+            text-align: right;
+            vertical-align: top;
+            width: 20%;
+        }
+
+        .hobby_table td {
+            color: #d9534f;
+            width: 33%;
+        }
+
+        input[type="checkbox"] {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .button-container {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            background-color: #f0f0f0;
+            border: 1px solid #888;
+            padding: 5px 15px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <div class="header_groups">SỞ THÍCH CỦA BẠN</div>
+    <form action="TaoFormDonGian.php" method="post">
+        <table>
+            <tr>
+                <td class="label">Họ và tên</td>
+                <td><input type="text" name="yourname" style="width: 200px;"></td>
+            </tr>
+            <tr>
+                <td class="label"> Email </td>
+                <td><input type="email" name="email" style="width: 150px;"></td>
+            </tr>
+            <tr>
+                <td class="label">Sở thích </td>
+                <table class="hobby_table">
+                    <tr>
+                        <td ><input type="checkbox" name="hobby" value="thethao"> Thể thao </td>
+                        <td><input type="checkbox" name="hobby" value="amnhac">Âm nhạc</td>
+                        <td><input type="checkbox" name="hobby" value="docsacg">Đọc sách</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="hobby" value="luotweb">Lướt web</td>
+                        <td><input type="checkbox" name="hobby" value="choigame">Chơi game</td>
+                        <td><input type="checkbox" name="hobby" value="Dienanh">Điện ảnh</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="hobby" value="dulich">Du lịch</td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" name="btnGuiThongTin">Gửi thông tin</button> </td>
+                        <td><button type="reset">Nhập lại</button> </td>
+                    </tr>
+                </table>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
