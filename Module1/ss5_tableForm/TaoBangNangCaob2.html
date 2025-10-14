@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch tháng 10/2009 - Hai Hàng Tiêu Đề</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .calendar-container {
+            width: 80%;
+            max-width: 700px;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #000080;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Bảng lịch */
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Định dạng chung cho tất cả các ô tiêu đề (th) */
+        .calendar-table th {
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            padding: 5px 0;
+        }
+
+        .vn-header th {
+            background-color: #ff9933;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .en-header th {
+            background-color: white;
+            color: #333;
+            font-weight: normal;
+            font-size: 13px;
+        }
+
+        .vn-header .sunday {
+            background-color: #c90000;
+            color: white;
+        }
+        .en-header .sunday {
+            background-color: white;
+            color: red;
+        }
+
+        .vn-header .saturday {
+            background-color: #000080;
+            color: white;
+        }
+        .en-header .saturday {
+            background-color: white;
+            color: #000080;
+        }
+
+        .calendar-table td {
+            height: 60px;
+            text-align: left;
+            vertical-align: top;
+            padding: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            position: relative;
+        }
+
+        /* Chữ số ngày (1, 2, 3...) */
+        .date {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            position: absolute;
+            top: 3px;
+            left: 5px;
+        }
+
+        /* Chữ số tháng (13, 14,...) - Số nhỏ ở góc */
+        .month-day {
+            font-size: 10px;
+            color: #777;
+            position: absolute;
+            bottom: 3px;
+            right: 5px;
+        }
+
+        /* Màu đặc biệt cho các ngày Chủ Nhật và Thứ Bảy */
+        .sunday-color {
+            color: #c90000;
+        }
+
+        .saturday-color {
+            color: #000080;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calendar-container">
+    <h1>Tháng 10 - October</h1>
+
+    <table class="calendar-table">
+        <thead>
+        <tr class="vn-header">
+            <th class="sunday">C.Nhật</th>
+            <th>T.Hai</th>
+            <th>T.Ba</th>
+            <th>T.Tư</th>
+            <th>T.Năm</th>
+            <th>T.Sáu</th>
+            <th class="saturday">T.Bảy</th>
+        </tr>
+        <tr class="en-header">
+            <th class="sunday">Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th class="saturday">Sat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span class="date">1</span><span class="month-day">13</span></td>
+            <td><span class="date">2</span><span class="month-day">14</span></td>
+            <td class="saturday-color"><span class="date">3</span><span class="month-day">15</span></td>
+        </tr>
+
+        <tr>
+            <td class="sunday-color"><span class="date">4</span><span class="month-day">16</span></td>
+            <td><span class="date">5</span><span class="month-day">17</span></td>
+            <td><span class="date">6</span><span class="month-day">18</span></td>
+            <td><span class="date">7</span><span class="month-day">19</span></td>
+            <td><span class="date">8</span><span class="month-day">20</span></td>
+            <td><span class="date">9</span><span class="month-day">21</span></td>
+            <td class="saturday-color"><span class="date">10</span><span class="month-day">22</span></td>
+        </tr>
+
+        <tr>
+            <td class="sunday-color"><span class="date">11</span><span class="month-day">23</span></td>
+            <td><span class="date">12</span><span class="month-day">24</span></td>
+            <td><span class="date">13</span><span class="month-day">25</span></td>
+            <td><span class="date">14</span><span class="month-day">26</span></td>
+            <td><span class="date">15</span><span class="month-day">27</span></td>
+            <td><span class="date">16</span><span class="month-day">28</span></td>
+            <td class="saturday-color"><span class="date">17</span><span class="month-day">29</span></td>
+        </tr>
+
+        <tr>
+            <td class="sunday-color"><span class="date">18</span><span class="month-day">1</span></td>
+            <td><span class="date">19</span><span class="month-day">2</span></td>
+            <td><span class="date">20</span><span class="month-day">3</span></td>
+            <td><span class="date">21</span><span class="month-day">4</span></td>
+            <td><span class="date">22</span><span class="month-day">5</span></td>
+            <td><span class="date">23</span><span class="month-day">6</span></td>
+            <td class="saturday-color"><span class="date">24</span><span class="month-day">7</span></td>
+        </tr>
+
+        <tr>
+            <td class="sunday-color"><span class="date">25</span><span class="month-day">8</span></td>
+            <td><span class="date">26</span><span class="month-day">9</span></td>
+            <td><span class="date">27</span><span class="month-day">10</span></td>
+            <td><span class="date">28</span><span class="month-day">11</span></td>
+            <td><span class="date">29</span><span class="month-day">12</span></td>
+            <td><span class="date">30</span><span class="month-day">13</span></td>
+            <td class="saturday-color"><span class="date">31</span><span class="month-day">14</span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

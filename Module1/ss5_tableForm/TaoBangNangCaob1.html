@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bàn cờ vua</title>
+    <style>
+        body{
+            display: flex;
+            justify-content:  center;
+            align-items: center;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .chessboard-container{
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            background-color: #ff9933;
+            padding: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .column-labels{
+            display: flex;
+            margin-left: 30px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .column-labels div{
+            width: 50px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .board-and-row-labels{
+            display: flex;
+        }
+        .row-labels{
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .row-labels div{
+            width: 25px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .chessboard{
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+        }
+        .square{
+            width:50px;
+            height:50px;
+        }
+        .white{
+            background-color: white;
+        }
+        .black{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="chessboard-container">
+    <div class="column-labels">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+    </div>
+
+    <div class="board-and-row-labels">
+        <div class="row-labels">
+            <div>A</div>
+            <div>B</div>
+            <div>C</div>
+            <div>D</div>
+            <div>E</div>
+            <div>F</div>
+            <div>G</div>
+            <div>H</div>
+        </div>
+
+        <div class="chessboard">
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+            <div class="square black"></div>
+            <div class="square white"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
