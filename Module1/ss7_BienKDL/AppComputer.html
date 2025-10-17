@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <td>
+                <input type="text" name="value1" id="value1">
+                <input type="text" name="value2" id="value2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" onclick="add()">Addition(+)</button>
+                <button type="button" onclick="sub()">Subtraction(-)</button>
+                <button type="button" onclick="mul()">Multiplication(*)</button>
+                <button type="button" onclick="devide()">Division(/)</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    function add() {
+        let value1 = parseInt(document.getElementById("value1").value);
+        let value2 = parseInt(document.getElementById("value2").value);
+
+        alert(value1 + value2);
+    }
+    function sub(){
+        let value1 = parseInt(document.getElementById("value1").value);
+        let value2 = parseInt(document.getElementById("value2").value);
+        alert(value1 - value2);
+    }
+    function mul(){
+        let value1 = parseInt(document.getElementById("value1").value);
+        let value2 = parseInt(document.getElementById("value2").value);
+        alert(value1*value2);
+    }
+    function devide(){
+        let value1 = parseInt(document.getElementById("value1").value);
+        let value2 = parseInt(document.getElementById("value2").value);
+        alert((value1/value2).toFixed(2));
+    }
+</script>
+</html>
