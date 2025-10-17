@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <th>Amount</th>
+            <th>From Currency</th>
+            <th>To Currency</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="number" name="amount" id="amount">
+            </td>
+            <td>
+                <select name="fromCurrency" id="fromCurrency">
+                    <option value="USD">USD</option>
+                    <option value="VietNam" selected>VietNam</option>
+                </select>
+            </td>
+            <td>
+                <select name="toCurrency" id="toCurrency">
+                    <option value="USD" selected>USD</option>
+                    <option value="VietNam">VietNam</option>
+                </select>
+            </td>
+            <td>
+                <button type="button" onclick="convert()">Convert</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    function convert(){
+        let amount = document.getElementById("amount").value;
+        let from = document.getElementById("fromCurrency").value;
+        let to = document.getElementById("toCurrency").value;
+        let result;
+        const rate = 0.000038;
+        if(from==="USD" && to==="USD"){
+            alert(amount + "USD");
+        }
+        else if(from==="VietNam" && to==="VietNam"){
+            alert(amount + "VND");
+        }
+        else if(from==="USD" && to==="VietNam"){
+            alert((amount/rate).toFixed(6) + "VND");
+        }
+        else{
+            alert((amount*rate).toFixed(6) + "USD");
+        }
+    }
+</script>
+</html>

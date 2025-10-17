@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="p1">Hello toi la p1</p>
+<h1 id="hd1"> Hello toi la hd1</h1>
+<label for="input1">Nhập tên của bạn: </label>
+<input id="input1" type="text">
+<button onclick="checkTen()">Check tên</button>
+</body>
+<script>
+    alert("Tôi là alert()");
+    confirm("Tôi là confirm");
+    var name = prompt("inpput your name:")
+    alert("Xin chào bạn " + name);
+    console.log("Toi là console");
+    document.writeln("<h1 style='color: red'>Tôi là document.write</h1>")
+
+    document.getElementById("p1").innerText = "<h1>Đây là thông tin mới</h1>";
+    document.getElementById("p1").innerHTML = "<h1>Đây là thông tin mới</h1>";
+
+    function checkTen() {
+        let name = document.getElementById("input1").value;
+         alert("Hello " + name + "!");
+    }
+</script>
+</html>
