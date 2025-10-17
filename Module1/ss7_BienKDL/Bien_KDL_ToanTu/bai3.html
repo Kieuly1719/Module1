@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diện tích hình tròn</title>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <th>Bán kính</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="bkinh" id="bkinh">
+                <button type="button" onclick="Dientich()">Diện tích</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    function Dientich() {
+        let r = parseFloat(document.getElementById("bkinh").value);
+        let s = (r*r*3.14).toFixed(2);
+        alert(s);
+    }
+</script>
+</html>

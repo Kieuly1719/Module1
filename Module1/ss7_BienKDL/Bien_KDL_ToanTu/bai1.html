@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <th style="width: 70px">Toán</th>
+            <th style="width: 100px">Vật Lý</th>
+            <th style="width: 70px">Hóa</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="DiemToan" id="DiemToan" style="width: 50px">
+            </td>
+            <td>
+                <input type="text" name="DiemLy" id="DiemLy" style="width: 80px">
+            </td>
+            <td>
+                <input type="text" name="DiemHoa" id="DiemHoa" style="width: 50px">
+            </td>
+            <td>
+                <button type="button" onclick="DTB()">Điểm trung bình</button>
+            </td>
+            <td>
+                Điểm TB: <span id="DTB"></span>
+            </td>
+            <td>
+                Tổng điểm: <span id="Tong"></span>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    function DTB() {
+        let diemToan = parseFloat(document.getElementById("DiemToan").value);
+        let diemLy = parseFloat(document.getElementById("DiemLy").value);
+        let diemHoa = parseFloat(document.getElementById("DiemHoa").value);
+
+        let tong = diemToan + diemLy + diemHoa;
+        let DTB = (tong/3).toFixed(2);
+        /*alert(DTB);
+        alert(tong);*/
+        document.getElementById("DTB").innerHTML = DTB;
+        document.getElementById("Tong").innerHTML = tong;
+    }
+</script>
+</html>

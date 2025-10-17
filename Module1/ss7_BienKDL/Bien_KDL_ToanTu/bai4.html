@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chu vi hình tròn</title>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <th>Bán kính</th>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="text" name="bkinh" id="bkinh">
+            </td>
+            <td>
+                <button type="button" onclick="Chuvi()">Chu vi</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    function Chuvi(){
+        let r = parseFloat(document.getElementById('bkinh').value);
+        let cv = (2*r*3.14).toFixed(2);
+        alert(cv);
+    }
+</script>
+</html>
