@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra năm nhuận</title>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <th>
+                Nhập năm: <input type="text" name="year" id="year">
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <button onclick="Check()" style="width: 90px">Kiểm tra</button>
+            </th>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    function Check() {
+        let year = parseInt(document.getElementById('year').value);
+        if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0){
+            alert(year + " là năm nhuận")
+        }
+        else{
+            alert(year + " không là năm nhuận");
+        }
+    }
+</script>
+</html>
