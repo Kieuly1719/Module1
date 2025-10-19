@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <th>
+                What is the "official" name of JavaScript? <input type="text" name="answer" id="answer">
+            </th>
+
+        </tr>
+        <tr>
+            <th>
+                <button type="button" onclick="checkAnswer()" style="width: 90px">Kiểm tra</button>
+            </th>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    function checkAnswer() {
+        let answer = document.getElementById('answer').value;
+        if (answer === 'ECMAScript') {
+            alert("Right!");
+        }
+        else{
+            alert("Didn't know? ECMAScript!")
+        }
+    }
+</script>
+</html>
