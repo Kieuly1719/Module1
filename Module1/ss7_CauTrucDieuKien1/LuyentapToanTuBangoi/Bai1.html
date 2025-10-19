@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            Nhập a: <input type="text" name="valuea" id="valuea">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Nhập b: <input type="text" name="valueb" id="valueb">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type="button" onclick="Sum()">Kết quả</button>
+        </td>
+    </tr>
+</table>
+</body>
+<script>
+    function Sum(){
+        let a = parseInt(document.getElementById('valuea').value);
+        let b = parseInt(document.getElementById('valueb').value);
+        (a+b) < 4 ? alert("Bellow") : alert("Over");
+    }
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>
+            Nhập chuỗi: <input type="text" name="value" id="value">
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <button type="button" onclick="CheckString()">Kiểm tra</button>
+        </td>
+    </tr>
+</table>
+</body>
+<script>
+    function CheckString(){
+        let s = document.getElementById("value").value;
+        let message = (s === "Employee") ? "Hello" :
+            (s === "Director") ? "Greetings" :
+                (s ==='') ? "No login" : '';
+        alert(message);
+    }
+</script>
+</html>
