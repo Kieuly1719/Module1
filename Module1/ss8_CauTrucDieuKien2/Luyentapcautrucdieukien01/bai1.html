@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            Nhập a: <input type="text" id="na">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Nhập b: <input type="text" id="nb">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="Check()">Kiểm tra</button>
+        </td>
+    </tr>
+</table>
+</body>
+<script>
+    function Check() {
+        let a = parseInt(document.getElementById('na').value);
+        let b = parseInt(document.getElementById('nb').value);
+        if( a%b === 0){
+            alert("Yes");
+        }
+        else{
+            alert("No");
+        }
+    }
+</script>
+</html>

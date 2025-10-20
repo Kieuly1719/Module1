@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            Điểm bài kiểm tra <input type="text" id="bkt">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Điểm thi giữa kỳ <input type="text" id="bgk">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Điểm thi cuối kỳ <input type="text" id="bck">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type="button" onclick="myFunction()">Kết quả</button>
+        </td>
+    </tr>
+</table>
+</body>
+<script>
+    function myFunction() {
+        let bkt = parseFloat(document.getElementById("bkt").value);
+        let bgk = parseFloat(document.getElementById("bgk").value);
+        let bck = parseFloat(document.getElementById("bck").value);
+        let kq = (bkt + bgk + bck)/3;
+        if (kq >= 8) {
+            alert("Giỏi");
+        }
+        else if(kq >= 6.5 && kq < 8){
+            alert("Khá");
+        }
+        else if(kq >= 5.0 && kq < 6.5){
+            alert("Trung bình");
+        }
+        else{
+            alert("Yếu");
+        }
+    }
+</script>
+</html>
