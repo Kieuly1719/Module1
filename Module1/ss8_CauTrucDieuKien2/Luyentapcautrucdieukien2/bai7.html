@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = parseFloat(prompt("Nhập a: "));
+    let b = parseFloat(prompt("Nhập b: "));
+    let c = parseFloat(prompt("Nhập c: "));
+
+    let d = (b*b) - (4*a*c);
+    if (d < 0){
+        alert("Phương trình vô nghiệm");
+    }
+    else if(d == 0){
+        alert("Phương trình có 1 nghiệm " + (-b/(2*a)).toFixed(2));
+    }
+    else{
+        let x1 = (-b + Math.sqrt(d)) / (2 * a);
+        let x2 = (-b - Math.sqrt(d)) / (2 * a);
+        alert("Phương trình có 2 nghiệm là: " + x1 + " và " + x2);
+    }
+</script>
+</body>
+</html>

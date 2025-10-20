@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let month = parseInt(prompt("Số tháng cho vay: "));
+    let lht = parseFloat(prompt("Lãi hằng tháng: "));
+    let tienvay = parseFloat(prompt("Số tiền vay: "));
+
+    let st = tienvay * Math.pow(1 + lht/100, month);
+    alert("Số tiền lãi: " + (st - tienvay).toFixed(3) + "VND");
+</script>
+</body>
+</html>
