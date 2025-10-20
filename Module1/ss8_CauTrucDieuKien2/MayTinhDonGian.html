@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+    <style>
+        .calculator{
+            width: 280px; /*Độ rộng của máy tính*/
+            border: 3px solid black; /*Đường viền đen dày*/
+            border-radius: 8px; /*Bo góc*/
+            padding: 15px;
+            margin: 50px auto;
+            background-color: #fdfdfd;
+        }
+        #display{
+            width: 93%;
+            padding: 10px;
+            font-size: 24px;
+            text-align: right;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color: blue;
+        }
+        .buttons{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .buttons button{
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: blue;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons button:hover{
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="display" value="1" readonly>
+
+    <div class="buttons">
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('+')">+</button>
+
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')">-</button>
+
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('x')">x</button>
+
+        <button onclick="clearD()">C</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="appendToDisplay('/')">/</button>
+    </div>
+</div>
+</body>
+<script>
+    let display = document.getElementById('display');
+    function appendToDisplay(value) {
+        if(value === 'x'){
+            value = '*';
+        }
+        if(display.value === '1'){
+            display.value = value;
+        }
+        else{
+            display.value += value;
+        }
+    }
+    function clearD() {
+        display.value = '';
+    }
+    function calculateResult() {
+        try{
+            display.value = eval(display.value);
+        } catch(error){
+            display.value = 'error';
+        }
+    }
+</script>
+</html>
