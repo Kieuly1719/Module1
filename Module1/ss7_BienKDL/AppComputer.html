@@ -15,36 +15,36 @@
         </tr>
         <tr>
             <td>
-                <button type="button" onclick="add()">Addition(+)</button>
-                <button type="button" onclick="sub()">Subtraction(-)</button>
-                <button type="button" onclick="mul()">Multiplication(*)</button>
-                <button type="button" onclick="devide()">Division(/)</button>
+                <button type="button" onclick="computer('add')" >Addition(+)</button>
+                <button type="button" onclick="computer('sub')" >Subtraction(-)</button>
+                <button type="button" onclick="computer('mul')" >Multiplication(*)</button>
+                <button type="button" onclick="computer('dive')" >Division(/)</button>
             </td>
         </tr>
     </table>
 </form>
 </body>
 <script>
-    function add() {
+    function computer(operator) {
         let value1 = parseInt(document.getElementById("value1").value);
         let value2 = parseInt(document.getElementById("value2").value);
 
-        alert(value1 + value2);
-    }
-    function sub(){
-        let value1 = parseInt(document.getElementById("value1").value);
-        let value2 = parseInt(document.getElementById("value2").value);
-        alert(value1 - value2);
-    }
-    function mul(){
-        let value1 = parseInt(document.getElementById("value1").value);
-        let value2 = parseInt(document.getElementById("value2").value);
-        alert(value1*value2);
-    }
-    function devide(){
-        let value1 = parseInt(document.getElementById("value1").value);
-        let value2 = parseInt(document.getElementById("value2").value);
-        alert((value1/value2).toFixed(2));
+        let result;
+        switch (operator) {
+            case 'add':
+                result = value1 + value2;
+                break;
+            case 'sub':
+                result = value1 - value2;
+                break;
+            case 'mul':
+                result = value1 * value2;
+                break;
+            default:
+                result = value1 / value2;
+                break;
+        }
+        alert(result.toFixed(2));
     }
 </script>
 </html>

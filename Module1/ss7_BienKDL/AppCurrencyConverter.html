@@ -42,7 +42,10 @@
         let to = document.getElementById("toCurrency").value;
         let result;
         const rate = 0.000038;
-        if(from==="USD" && to==="USD"){
+        if(amount < 0 || amount === Infinity){
+            alert("Vui lòng nhập số hợp lệ");
+        }
+        else if(from==="USD" && to==="USD"){
             alert(amount + "USD");
         }
         else if(from==="VietNam" && to==="VietNam"){
