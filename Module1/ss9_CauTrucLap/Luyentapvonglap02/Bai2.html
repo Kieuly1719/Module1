@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            Nhập số nguyên dương: <input type="text" id="snd">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="Giaithua()">Tính</button>
+        </td>
+    </tr>
+</table>
+<script>
+    function Giaithua(){
+        let n = parseInt(document.getElementById("snd").value);
+        let gt = 1;
+        let i = 2;
+        while(i <= n){
+            gt *= i;
+            i++;
+        }
+        alert(gt);
+    }
+</script>
+</body>
+</html>

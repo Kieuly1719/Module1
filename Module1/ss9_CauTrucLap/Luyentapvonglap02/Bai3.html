@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa lỗi vẽ hình</title>
+    <style>
+        p {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+<p id="t1"></p>
+<br>
+<p id="t2"></p>
+<br>
+<p id="t3"></p>
+<br>
+<p id="t4"></p>
+<script>
+    let text1 = "";
+    let text2 = "";
+    let text3 = "";
+    let text4 = "";
+    let i, j, k;
+    let height = 5; // Dùng biến cho dễ thay đổi
+
+    // Hình 1: Tam giác vuông trái (tăng)
+    for(i = 1; i <= height; i++){
+        for(j = 1; j <= i; j++){
+            text1 += "*";
+        }
+        text1 += "<br>";
+    }
+
+    // Hình 2: Tam giác vuông trái (giảm) - ĐÃ SỬA LOGIC
+    for(i = height; i >= 1; i--){ // Sửa: i chạy từ 5 về 1
+        for(j = 1; j <= i; j++){
+            text2 += "*";
+        }
+        text2 += "<br>";
+    }
+
+    // Hình 3: Tam giác vuông phải (tăng) - Thêm logic khoảng trắng
+    for(i = 1; i <= height; i++){
+        // Thêm vòng lặp để tạo khoảng trắng
+        for(k = 1; k <= (height - i); k++){
+            text3 += "&nbsp;"; // Dùng &nbsp; (non-breaking space)
+        }
+        // Vòng lặp vẽ sao
+        for(j = 1; j <= i; j++){
+            text3 += "*";
+        }
+        text3 += "<br>";
+    }
+
+    // Hình 4: Tam giác vuông phải (giảm) - Thêm logic khoảng trắng
+    for(i = height; i >= 1; i--){
+        // Thêm vòng lặp để tạo khoảng trắng
+        for(k = 1; k <= (height - i); k++){
+            text4 += "&nbsp";
+        }
+        // Vòng lặp vẽ sao
+        for(j = 1; j <= i; j++){
+            text4 += "*";
+        }
+        text4 += "<br>";
+    }
+
+    // SỬA LỖI: Dùng innerHTML thay vì innerText
+    document.getElementById("t1").innerHTML = text1;
+    document.getElementById("t2").innerHTML = text2;
+    document.getElementById("t3").innerHTML = text3;
+    document.getElementById("t4").innerHTML = text4;
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="demo"></p>
+<script>
+    let ft = 0;
+    let fs = 1;
+    let i;
+    let tong = 1;
+    for(i = 2; i<20; i++){
+        t = ft + fs;
+        ft = fs;
+        fs = t;
+        tong += t;
+    }
+    document.getElementById('demo').innerHTML = tong;
+</script>
+</body>
+</html>

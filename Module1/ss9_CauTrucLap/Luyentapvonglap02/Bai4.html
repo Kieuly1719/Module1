@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="hcn"></p>
+<script>
+    let hv ="";
+    let i,j;
+    for(i = 1; i <= 7; i++){
+        if(i === 1 || i === 7){
+            for(j = 1; j <= 21; j++){
+                hv += "*";
+            }
+        } else{
+            for(j = 1; j <= 21; j++){
+                if(j === 1 || j === 21){
+                    hv += "*";
+                }
+                else{
+                    hv += "&nbsp&nbsp;";
+                }
+            }
+        }
+        hv += "<br>";
+    }
+    document.getElementById("hcn").innerHTML = hv;
+</script>
+</body>
+</html>

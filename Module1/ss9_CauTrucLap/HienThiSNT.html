@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Số nguyên tố</title>
+</head>
+<body>
+<script>
+    function checkSNT(x){
+        for(var i = 2; i < x; i++){
+            if(x%i === 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    let count = 0;
+    let text = '';
+    let i = 2;
+    while(count < 20){
+        if(checkSNT(i) === true){
+            count++;
+            text += i + " ";
+        }
+        i++;
+    }
+    alert(text);
+</script>
+</body>
+</html>
