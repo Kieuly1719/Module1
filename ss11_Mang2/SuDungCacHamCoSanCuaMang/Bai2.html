@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let numbers = prompt("Nhập 1 chuỗi: ");
+    let newArray = "";
+    for(let i = 0; i < numbers.length; i++) {
+        if(parseInt(numbers[i]) % 2 === 0 && parseInt(numbers[i+1]) % 2 === 0) {
+            newArray += (numbers[i] + "-");
+        }
+        else{
+            newArray += numbers[i];
+        }
+    }
+    alert(newArray);
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let string1 = prompt("Nhập 1 chuỗi: ");
+    let newString = "";
+    for(let i = 0; i < string1.length; i++) {
+        if(string1[i] === string1[i].toUpperCase()) {
+            newString += (string1[i].toLowerCase());
+        }
+        else{
+            newString += (string1[i].toUpperCase());
+        }
+    }
+    alert(newString);
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [-3,4,2,1,0,9,10,15,7,20];
+    let max = array[0];
+    let index = 0;
+    for(let i = 1; i < array.length; i++){
+        if(array[i] > max){
+            max = array[i];
+            index = i;
+        }
+    }
+    alert("Phần tử có giá trị lớn nhất là " + max + " tại vị trí " + index);
+</script>
+</body>
+</html>

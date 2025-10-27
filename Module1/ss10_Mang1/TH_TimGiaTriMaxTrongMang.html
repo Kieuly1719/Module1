@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="FindMaxValue()">Submit</button>
+</body>
+<script>
+    let x = [-3,5,1,3,2,10];
+    function FindMaxValue(){
+        let max = x[0];
+        for(let i = 1; i < x.length; i++){
+            if(x[i] > max){
+                max = x[i];
+            }
+        }
+        alert("Giá trị lớn nhất trong mảng là: " + max);
+    }
+</script>
+</html>

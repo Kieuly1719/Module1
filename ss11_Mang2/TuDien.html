@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary</title>
+</head>
+<body>
+<form>
+    Nhập từ cần dịch: <input type="text" id="word">
+    <button onclick="translate1()">Dịch</button>
+</form>
+</body>
+<script>
+    function translate1() {
+        let mangTiengAnh = ['hello', 'world', 'cat', 'dog', 'book', 'student'];
+        let mangTiengViet = ['xin chào', 'thế giới', 'con mèo', 'con chó', 'quyển sách', 'học sinh'];
+        let word = document.getElementById('word').value;
+        let index = -1;
+        for (let i = 0; i < mangTiengAnh.length; i++) {
+            if(mangTiengAnh[i] === word) {
+                index = i;
+            }
+        }
+        if(index > -1){
+            alert(mangTiengViet[index]);
+        }
+        else{
+            alert("Không tìm thấy");
+        }
+    }
+</script>
+</html>

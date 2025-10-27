@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>Sample Screen:</label>
+<br>
+<input id="screen" type="text">
+<button onclick="AddElement()">Add</button>
+<button onclick="DisplayElement()">Display</button>
+<div id="result"></div>
+</body>
+<script>
+    let x = 0;
+    let i = 0;
+    let array = Array();
+    function AddElement(){
+        let vlue = document.getElementById("screen").value;
+        array[x] = vlue;
+        alert("Đã thêm phần tử " + array[x] + " vào mảng thành công");
+        x++;
+        document.getElementById("screen").value = "";
+    }
+    function DisplayElement(){
+        let e = "<hr/>";
+        for(i = 0; i < array.length; i++){
+            e += "Element " + i + " = " + array[i] + "<br>";
+        }
+        document.getElementById("result").innerHTML = e;
+    }
+</script>
+</html>

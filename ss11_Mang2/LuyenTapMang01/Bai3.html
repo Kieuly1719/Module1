@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [-3,4,2,1,0,9,10,15,7,20];
+    let max = array[0];
+    let sum = 0;
+    for(let i = 1; i < array.length; i++){
+        if(array[i] > max){
+            max = array[i];
+        }
+        sum += array[i];
+    }
+    alert("Giá trị lớn nhất trong mảng là " + max + " và " + "giá trị trung bình của các phần tử trong mảng " + (sum/array.length).toFixed(2));
+</script>
+</body>
+</html>

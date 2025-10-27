@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [-3,4,2,1,0,9,10,15,7,20];
+    let v = parseInt(prompt("Nhập giá trị: "));
+    let index = -1;
+    for(let i = 0; i < array.length; i++){
+        if(array[i] === v){
+            index = i;
+        }
+    }
+    if(index > -1){
+        alert(v + " is in the array");
+    }
+    else{
+        alert(v + " is not in the array");
+    }
+</script>
+</body>
+</html>

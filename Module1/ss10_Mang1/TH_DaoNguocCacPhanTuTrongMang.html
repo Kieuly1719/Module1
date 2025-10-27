@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="result()">Submit</button>
+<p id="result"></p>
+<script>
+    let x = [-3,5,1,3,2,10];
+    let y = Array();
+    function result() {
+        for (let i = 0; i < x.length; i++) {
+            y.unshift(x[i]);
+        }
+        document.getElementById("result").innerHTML = y;
+    }
+</script>
+</body>
+</html>
