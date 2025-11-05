@@ -6,14 +6,13 @@
 </head>
 <body>
 <script>
-    let arr = ['a',2,'e',5,6,'d','f',9];
+    let str = "hello";
+    let arr = str.split('');
     let count = 0;
     for(i of arr){
-        if(i >= '0' && i <= '9'){
-            count += 1;
-        }
+        count += 1;
     }
-    alert("Số ký tự số trong chuỗi " + arr + " là: " + count);
+    alert(count);
 </script>    
 </body>
 </html>

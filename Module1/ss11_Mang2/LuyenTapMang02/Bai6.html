@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str = prompt("Nhập chuỗi: ");
+    let arr = str.split('');
+    for(index in arr){
+        if(arr[index] === '-'){
+            arr[index] = '_';
+        }
+    }
+    alert(arr.join(''));
+    alert(count);
+</script>    
+</body>
+</html>
