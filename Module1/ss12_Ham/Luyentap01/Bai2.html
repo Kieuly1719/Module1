@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="output"></p>
+</body>
+<script>
+    function Increase(valueI){
+        valueI += 1;
+        return valueI;
+    }
+    let i = parseInt(prompt("Nhập giá tri muốn tăng: "));
+    document.getElementById("output").innerHTML = Increase(i);
+</script>
+</html>

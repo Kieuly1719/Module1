@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="output"></p>
+</body>
+<script>
+    let star = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let constellation = ["Ursa Minor", "Taurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+    function findIndex(nameStar, arr1, arr2){
+        for(let i = 0; i < arr1.length; i++){
+            if(arr1[i] === nameStar){
+                return arr2[i];
+            }
+        }
+    }
+    let name = prompt("Nhập tên ngôi sao: ");
+    document.getElementById("output").innerHTML = findIndex(name, star, constellation);
+</script>
+</html>
