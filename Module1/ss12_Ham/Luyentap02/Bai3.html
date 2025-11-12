@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function GiaiThua(a){
+        let kq = 1;
+        for(let i = 1; i <= a; i++){
+            kq = kq*i;
+        }
+        return kq;
+    }
+    let a = parseInt(prompt("Nhập số bạn muốn tính giai thừa: "));
+    alert("Giai thừa của " + a + " là: " + GiaiThua(a));
+</script>
+</body>
+</html>

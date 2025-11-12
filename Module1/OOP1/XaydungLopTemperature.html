@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Temperature{
+        constructor(dc){
+            this.dc = dc;
+            this.gt_min = -273;
+        }
+        tranc_f(){
+            return (this.dc * 9/5) + 32;
+        }
+        tranc_k(){
+            return this.dc - this.gt_min;
+        }
+    }
+    let dt1 = new Temperature(25);
+    alert("Nhiệt độ (F): " + dt1.tranc_f());
+    alert("Nhiệt độ (K): " + dt1.tranc_k());
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="skt">
+<button onclick="checkSND()">Kiểm tra</button>
+<script>
+    function checkSND(){
+        let a = parseInt(document.getElementById("skt").value);
+        if(Number.isInteger(a) === true && a > 0){
+            alert("Đây là số nguyên dương");
+        }
+        else{
+            alert("Đây không phair số nguyên dương")
+        }
+    }
+
+</script>
+</body>
+</html>

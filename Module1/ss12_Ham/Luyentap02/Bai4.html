@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function checkInt(a){
+        if(a >= '0' && a <= '9'){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    let a = prompt("Nhập ký tự: ");
+    if(checkInt(a) === true){
+        alert(a + " là kí tự số");
+    }
+    else{
+        alert(a + " không là ký tự số");
+    }
+</script>
+</body>
+</html>
