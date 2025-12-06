@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm khách hàng</title>
+    <style>
+     body {
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         background-color: #f4f7f6; /* Nền trang nhẹ */
+         display: flex;
+         flex-direction: column;
+         align-items: center; /* Căn giữa theo chiều ngang */
+         padding-top: 30px;
+     }
+
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 25px;
+        font-size: 1.8em;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+
+    form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px; /* Giới hạn chiều rộng form */
+    }
+
+    input[type="text"], input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px; /* Khoảng cách giữa các ô nhập liệu */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Đảm bảo padding không làm tăng width vượt quá 100% */
+        font-size: 1em;
+        transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus {
+        border-color: #3498db; /* Đổi màu viền khi người dùng focus */
+        outline: none;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        background-color: #3498db;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #2980b9; /* Màu tối hơn khi di chuột */
+    }
+    </style>
+</head>
+<body>
+<h2>Thêm khách hàng mới</h2>
+<form id="cusForm">
+    <input type="text" id="maKH" placeholder="Mã khách hàng: " required><br>
+    <input type="text" id="tenKH" placeholder="Tên khách hàng: " required><br>
+    <input type="text" id="sdt" placeholder="Số điện thoại: " required><br>
+    <input type="text" id="address" placeholder="Địa chỉ: " required><br>
+    <input type="text" id="email" placeholder="Email: " required><br>
+    <button type="submit" onclick="handleSubmit()">Thêm khách hàng</button>
+</form>
+</body>
+<script src="qlkh.js"></script>
+<script >
+    function handleSubmit(){
+        event.preventDefault();
+        const id = document.getElementById("maKH").value;
+        const name = document.getElementById("tenKH").value;
+        const sdt = document.getElementById("sdt").value;
+        const address = document.getElementById("address").value;
+        const email = document.getElementById("email").value;
+
+        them_khach_hang(id, name, sdt, address, email);
+    }
+</script>
+</html>

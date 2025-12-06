@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nhân Viên - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>ỨNG DỤNG QUẢN LÝ NHÂN VIÊN</h1>
+    <nav>
+        <a href="index.html">Quản lý Chung</a>
+        <a href="add_employee.html">Thêm Nhân Viên Mới</a>
+    </nav>
+</header>
+
+<main>
+    <section id="employee_management">
+        <h2>👤 Danh Sách Nhân Viên</h2>
+        <button class="add-new-btn" onclick="window.location.href='add_employee.html'">+ Thêm Nhân Viên</button>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ và Tên</th>
+                    <th>Chức vụ</th>
+                    <th>Lương cơ bản</th>
+                    <th>SĐT</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody id="employee_list_body">
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="leave_management">
+        <h2>📅 Quản Lý Đơn Xin Nghỉ Phép</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID Đơn</th>
+                    <th>ID NV</th>
+                    <th>Tên NV</th>
+                    <th>Thời gian nghỉ</th>
+                    <th>Lý do</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+                </thead>
+                <tbody id="leave_requests_body">
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Ứng dụng Quản lý Nhân viên</p>
+</footer>
+
+<script src="qlnv.js"></script>
+</body>
+</html>

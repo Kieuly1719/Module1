@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Nhân viên - EMS</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+<header>
+    <h1>Thông tin Nhân viên</h1>
+    <button id="logoutButton">Đăng xuất</button>
+</header>
+
+<div class="container">
+    <section id="personalInfo">
+        <h2>1. Thông tin Cá nhân</h2>
+        <form id="personalInfoForm">
+            <div id="infoDisplay">
+            </div>
+            <button type="submit" id="saveInfoBtn">Lưu thông tin</button>
+            <button type="button" id="changePassBtn">Thay đổi Mật khẩu</button>
+        </form>
+    </section>
+
+    <section id="leaveSubmission">
+        <h2>2. Nộp Đơn Xin nghỉ phép</h2>
+        <form id="leaveRequestForm">
+            <button type="submit">Gửi Đơn</button>
+        </form>
+    </section>
+
+    <section id="payrollSlip">
+        <h2>3. Phiếu Lương Gần Nhất</h2>
+        <div id="payrollDisplay">
+        </div>
+        <button id="viewAllSlips">Xem Lịch sử Phiếu Lương</button>
+    </section>
+</div>
+
+
+<script src="../scripts/app.js"></script>
+<script>
+    // Gắn sự kiện và hiển thị dữ liệu ban đầu
+    document.addEventListener('DOMContentLoaded', () => {
+        // Kiểm tra quyền Employee (cần được tích hợp trong AuthManager)
+        if (AuthManager.getCurrentUserRole() !== 'employee') {
+            window.location.href = 'login.html';
+            return;
+        }
+        EmployeeUI.bindEmployeeEvents(); // [cite: 42] Gắn sự kiện cho các nút (Lưu thông tin, Thay đổi mật khẩu, Nộp đơn)
+
+        const currentEmployee = AuthManager.getCurrentUser(); // Giả sử hàm này lấy NV đang đăng nhập
+        EmployeeUI.displayPersonalInfo(currentEmployee); // [cite: 40]
+        const latestPayroll = PayrollManager.getLatestPayroll(currentEmployee.id); // Giả sử hàm này tồn tại
+        EmployeeUI.renderPayrollSlip(latestPayroll); // [cite: 41]
+    });
+</script>
+</body>
+</html>

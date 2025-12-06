@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Nhân Viên Mới</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>➕ Thêm Nhân Viên Mới</h1>
+    <nav>
+        <a href="index.html">← Quay lại Dashboard</a>
+    </nav>
+</header>
+
+<main>
+    <form id="add_employee_form">
+        <h2>Thông tin Cơ bản</h2>
+
+        <label for="emp_id">ID Nhân viên (Duy nhất):</label>
+        <input type="number" id="emp_id" required>
+
+        <label for="emp_name">Họ và Tên:</label>
+        <input type="text" id="emp_name" required>
+
+        <label for="emp_position">Chức vụ:</label>
+        <input type="text" id="emp_position" required>
+
+        <label for="emp_salary">Lương cơ bản (VNĐ):</label>
+        <input type="number" id="emp_salary" required min="0">
+
+        <h3>Thông tin Liên hệ</h3>
+
+        <label for="emp_phone">Số điện thoại:</label>
+        <input type="tel" id="emp_phone">
+
+        <label for="emp_email">Email:</label>
+        <input type="email" id="emp_email">
+
+        <label for="emp_address">Địa chỉ:</label>
+        <input type="text" id="emp_address">
+
+        <button type="submit" class="submit-btn">Lưu Nhân Viên</button>
+    </form>
+</main>
+
+<script src="script.js"></script>
+
+<script>
+    document.getElementById('add_employee_form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Lấy dữ liệu từ Form
+        const id = parseInt(document.getElementById('emp_id').value);
+        const name = document.getElementById('emp_name').value;
+        const phone = document.getElementById('emp_phone').value;
+        const address = document.getElementById('emp_address').value;
+        const email = document.getElementById('emp_email').value;
+        const position = document.getElementById('emp_position').value;
+        const baseSalary = parseInt(document.getElementById('emp_salary').value);
+
+        // Gọi hàm thêm nhân viên từ script.js
+        themNhanVien(id, name, phone, address, email, position, baseSalary);
+
+        // Sau khi thêm thành công, chuyển về trang danh sách
+        window.location.href = "index.html";
+    });
+</script>
+</body>
+</html>

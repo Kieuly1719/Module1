@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin - EMS</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+<header>
+    <h1>Quản lý Nhân viên (Admin Dashboard)</h1>
+    <button id="logoutButton">Đăng xuất</button>
+</header>
+
+<div class="container">
+    <section id="employeeManagement">
+        <h2>1. Quản lý Nhân viên (CRUD)</h2>
+        <button id="addEmployeeBtn">Thêm Nhân viên Mới</button>
+        <table id="employeeTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Họ và Tên</th>
+                <th>Vai trò</th>
+                <th>Lương</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody id="employeeList">
+            </tbody>
+        </table>
+    </section>
+
+    <section id="leaveManagement">
+        <h2>2. Phê duyệt Đơn nghỉ phép</h2>
+        <table id="leaveRequestsTable">
+            <thead>
+            <tr>
+                <th>ID NV</th>
+                <th>Lý do</th>
+                <th>Thời gian</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody id="leaveRequestList">
+            </tbody>
+        </table>
+    </section>
+
+    <div id="employeeModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3 id="employeeModalTitle">Thêm Nhân viên Mới</h3>
+
+            <form id="employeeForm">
+                <input type="hidden" id="emp_id_edit">
+
+                <div class="form-group">
+                    <label for="emp_fullName">Họ và Tên:</label>
+                    <input type="text" id="emp_fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emp_email">Email:</label>
+                    <input type="email" id="emp_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emp_username">Tên đăng nhập:</label>
+                    <input type="text" id="emp_username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emp_password">Mật khẩu:</label>
+                    <input type="password" id="emp_password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emp_salary">Lương Cơ bản:</label>
+                    <input type="number" id="emp_salary" required min="1000000">
+                </div>
+
+                <div class="form-group">
+                    <label for="emp_role">Vai trò:</label>
+                    <select id="emp_role" required>
+                        <option value="employee">Nhân viên</option>
+                        <option value="admin">Quản trị viên (Admin)</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="modalSaveBtn">Lưu</button>
+                    <button type="button" class="close-modal" onclick="document.getElementById('employeeModal').style.display='none'">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="salaryModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3>Cập nhật Lương Nhân viên</h3>
+            <form id="salaryUpdateForm">
+                <input type="hidden" id="salary_employeeId">
+
+                <div class="form-group">
+                    <label for="newSalary">Mức Lương Mới (VNĐ):</label>
+                    <input type="number" id="newSalary" required min="1000000">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Cập nhật</button>
+                    <button type="button" class="close-modal" onclick="document.getElementById('salaryModal').style.display='none'">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../scripts/app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (AuthManager.getCurrentUserRole() !== 'admin') {
+            window.location.href = 'login.html';
+            return;
+        }
+        AdminUI.bindAdminEvents();
+
+        // Hiển thị dữ liệu
+        const employees = StorageManager.getEmployees();
+        AdminUI.renderEmployeeTable(employees.filter(e => e.role !== 'admin'));
+        const requests = StorageManager.getRequests();
+        AdminUI.renderLeaveRequests(requests.filter(r => r.status === 'Pending'));
+    });
+</script>
+</body>
+</html>

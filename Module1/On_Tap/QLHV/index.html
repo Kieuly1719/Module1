@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý khách hàng</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ecf0f1; /* Nền nhẹ */
+            display: flex; /* Dùng Flexbox để căn giữa nội dung */
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        /* Ẩn các thành phần bảng không cần thiết và tạo bố cục menu */
+        table {
+            width: 300px; /* Độ rộng cố định cho menu */
+            border-collapse: collapse;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bóng đổ nổi bật */
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        /* Xóa viền thừa và căn chỉnh */
+        tr {
+            border: none;
+        }
+
+        /* Định dạng các ô chứa liên kết */
+        th {
+            text-align: center;
+            padding: 0;
+            border-bottom: 1px solid #eee; /* Đường kẻ phân cách giữa các mục */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hiệu ứng khi di chuột qua hàng */
+        th:hover {
+            background-color: #e8f4f8; /* Màu nền nhẹ khi hover */
+        }
+
+        /* Định dạng liên kết */
+        a {
+            display: block; /* Chiếm hết không gian ô */
+            text-decoration: none; /* Bỏ gạch chân */
+            color: #3498db; /* Màu xanh nổi bật */
+            font-weight: 600;
+            padding: 15px 20px; /* Tăng kích thước khu vực click */
+            transition: color 0.3s ease;
+        }
+
+        /* Đổi màu chữ khi di chuột qua liên kết */
+        a:hover {
+            color: #2980b9;
+        }
+
+        /* Xóa đường kẻ dưới cùng */
+        tr:last-child th {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+<h2>Chức năng quản lý: </h2>
+<table>
+    <tr>
+        <th>
+            <a href="xem_danh_sach_hoc_vien.html">Xem danh sách học viên</a>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <a href="them_hoc_vien.html">Thêm học viên</a>
+        </th>
+    </tr>
+</table>
+</body>
+</html>

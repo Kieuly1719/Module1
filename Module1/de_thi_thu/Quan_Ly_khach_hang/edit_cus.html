@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh sửa thông tin khách hàng</title>
+</head>
+<body>
+    <h2>Sửa thông tin khách hàng</h2>
+<form id="editForm">
+    <input type="text" id="maKH" placeholder="Mã khách hàng" required readonly> <br>
+    <input type="text" id="tenKH" placeholder="Tên khách hàng" required> <br>
+    <input type="text" id="sdt" placeholder="Số điện thoại: " required><br>
+    <input type="text" id="address" placeholder="Địa chỉ: " required><br>
+    <input type="text" id="email" placeholder="Email: " required><br>
+    <button type="submit">Lưu Thay Đổi</button>
+</form>
+</body>
+<script src="qlkh.js"></script>
+<script>
+    function getIdFromURL(name, url = window.location.href){
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    function taiDuLieuKhachHang(){
+        const khachHangId = getIdFromURL('id');
+        if (khachHangId == null) return;
+        let danhSach = taiDanhSach();
+        const id_cus = danhSach.find(kh => kh.id == khachHangId);
+
+        if(id_cus != null){
+            document.getElementById('maKH').value = id_cus.id;
+            document.getElementById('tenKH').value = id_cus.name;
+            document.getElementById('sdt').value = id_cus.sdt;
+            document.getElementById('address').value = id_cus.address;
+            document.getElementById('email').value = id_cus.email;
+        } else{
+            alert(`không tìm thấy khách hàng với ID: ${id_cus}`);
+            window.location.href = 'xem_danh_sach.html';
+        }
+    }
+    function luuThayDoi(event){
+        event.preventDefault();
+        const id = document.getElementById('maKH').value;
+        const name = document.getElementById('tenKH').value;
+        const sdt = document.getElementById('sdt').value;
+        const address = document.getElementById('address').value;
+        const email = document.getElementById('email').value;
+
+        let danhSach = taiDanhSach();
+        const cus = danhSach.find(kh => kh.id === id);
+        cus.name = name;
+        cus.sdt = sdt;
+        cus.address = address;
+        cus.email = email;
+        luu_danhSach(danhSach);
+        window.location.href = 'xem_danh_sach.html';
+    }
+    document.getElementById('editForm').addEventListener('submit', luuThayDoi);
+    document.addEventListener('DOMContentLoaded', taiDuLieuKhachHang);
+</script>
+</html>

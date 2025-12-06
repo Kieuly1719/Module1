@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách khách hàng</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Phông chữ hiện đại */
+            background-color: #f4f7f6; /* Nền trang nhẹ nhàng */
+            margin: 20px;
+            padding: 0;
+        }
+
+        h2 {
+            color: #2c3e50; /* Màu tiêu đề đậm */
+            border-bottom: 2px solid #3498db; /* Đường kẻ dưới tiêu đề */
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            border-collapse: collapse; /* Gộp các đường viền lại thành một */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
+            background-color: white; /* Nền bảng màu trắng */
+            border-radius: 8px; /* Bo góc bảng */
+            overflow: hidden; /* Cần thiết để bo góc hoạt động tốt */
+        }
+
+        th, td {
+            padding: 12px 15px; /* Tăng khoảng đệm bên trong ô */
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Đường kẻ ngang mỏng */
+        }
+
+        /* Kiểu dáng cho phần tiêu đề */
+        thead tr {
+            background-color: #3498db; /* Màu nền xanh dương nổi bật */
+            color: white; /* Chữ màu trắng */
+        }
+
+        th {
+            font-weight: bold;
+            text-transform: uppercase; /* Chữ hoa */
+            letter-spacing: 0.5px; /* Khoảng cách chữ */
+        }
+
+        /* Kiểu dáng cho các hàng dữ liệu */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9; /* Tô màu xen kẽ hàng */
+        }
+
+        /* Hiệu ứng khi di chuột qua hàng */
+        tbody tr:hover {
+            background-color: #e8f4f8; /* Đổi màu khi di chuột */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h2>Danh sách học viên</h2>
+<table>
+    <thead> <tr>
+        <th>Mã học viên</th>
+        <th>Tên</th>
+        <th>Lớp</th>
+        <th>Email</th>
+        <th>Ngày sinh</th>
+        <th>Module</th>
+        <th>Thao tác</th>
+    </tr>
+    </thead>
+    <tbody id="student_list_body"> </tbody>
+</table>
+</body>
+<script src="qlhv.js"></script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <p id="ketqua"></p>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập n: "));
+    let k = parseInt(prompt("Nhập k: "));
+    let list = prompt("Nhập mảng số nguyên: ");
+    const arr = list.split(",").map(s => Number(s.trim()));
+    const areInt = arr.every(s => Number.isInteger(s));
+    if(!areInt || arr.length !== n){
+        alert("Vui lòng nhập " + n + " số nguyên");
+    }
+    else{
+        let max = 0;
+        let s1 = arr[0];
+        let s2 = arr[n-1];
+        var kq = document.getElementById("ketqua");
+        for(let i = 0; i < Number.parseInt(arr.length/2); i++){
+            if(arr[i] + arr[n-1-i] > max){
+                max = arr[i] + arr[n-1-i];
+                s1 = arr[i];
+                s2 = arr[n-1-i];
+            }
+        }
+        kq.innerHTML = kq.innerHTML + "1. Cặp đôi đôí xứng có tổng cao nhât là: " + s1 + "," + s2 + ".<br>";
+        let count = 0;
+        let arr_kq2 = [];
+        for(let i = 0; i < arr.length; i++){
+            for (let j = i+1; j < arr.length; j++){
+                if((arr[i] + arr[j]) % k === 0){
+                    count++;
+                    let s = "(" + arr[i] + "," + arr[j] + ")";
+                    arr_kq2.push(s);
+                }
+            }
+        }
+        kq.innerHTML = kq.innerHTML + "2. Số cặp phần tử chia hết cho "+ k + " là " + count + ": " + arr_kq2.join() + "<br>";
+        let arr_kq3 = [];
+        for(let i = 0; i < arr.length; i++){
+            let dem = 0;
+            for(let j = 0; j < arr_kq3.length; j++){
+                if(arr_kq3[j] === arr[i]){
+                    dem++;
+                }
+            }
+            if(dem === 0){
+                arr_kq3.push(arr[i]);
+            }
+        }
+        kq.innerHTML = kq.innerHTML + "3. Loại bỏ các phần tử trùng lặp ta được mảng: " + arr_kq3.join() + "<br>";
+    }
+</script>
+</body>
+</html>

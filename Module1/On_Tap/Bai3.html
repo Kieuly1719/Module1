@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let s1 = parseInt(prompt("Nhập số nguyên thứ nhất: "));
+    let s2 = parseInt(prompt("Nhập số nguyên thứ hai: "));
+    if(s1 > s2){
+        var min = s2;
+    }else{
+        var min = s1;
+    }
+    for(let i = min; i >= 0; i--){
+        if(s1 % i === 0 && s2 % i === 0){
+            alert("Ước chung lớn nhất của " + s1 + " và " + s2 + ": " + i);
+            alert("Bội chung nhỏ nhất của " + s1 + " và " + s2 + ": " + s1*s2/i);
+            break;
+        }
+    }
+</script>
+</body>
+</html>

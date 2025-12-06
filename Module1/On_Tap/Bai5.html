@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a = [1,2,5,6,2,3,4];
+    var b = [3,2,6,1,8,9,2];
+    var kq = [];
+    for(let i = 0; i < b.length; i++){
+        let count = 0;
+        for(let j = 0; j < a.length; j++){
+            if(a[j] === b[i]){
+                count++;
+            }
+        }
+        if(count === 0){
+            kq.push(b[i]);
+        }
+    }
+    var kq_moi = kq.sort(function(a,b){
+        return a-b;
+    })
+    alert("Mảng mới là: " + kq_moi.join());
+</script>
+</body>
+</html>

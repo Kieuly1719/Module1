@@ -1,0 +1,41 @@
+<!-- Module1/thi_thuc_hanh/QuanLySach/QuanLySach.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Quản lý sách</title>
+    <link rel="stylesheet" href="qls.css" />
+</head>
+<body>
+<h1>Quản lý sách</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Mã số sách</th>
+        <th>Tên sách</th>
+        <th>Năm xuất bản</th>
+        <th>Số quyển</th>
+        <th>tình trạng</th>
+    </tr>
+    </thead>
+    <tbody id="book_list_body"></tbody>
+</table>
+
+<div class="controls">
+    <button id="btn_add_existing" class="rect-btn">Thêm sách đã có</button>
+    <button id="btn_add_new" class="rect-btn" onclick="handlerAdd()">Thêm sách mới</button>
+    <button id="btn_borrow" class="rect-btn">Mượn sách</button>
+    <button id="btn_most_borrowed" class="rect-btn">Sách mượn nhiều nhất</button>
+</div>
+
+<div id="most_borrowed" class="most-borrowed"></div>
+
+<script src="qls.js"></script>
+<script>
+    function handlerAdd() {
+        window.location.href = "Them_sach_moi.html";
+    }
+</script>
+</body>
+</html>

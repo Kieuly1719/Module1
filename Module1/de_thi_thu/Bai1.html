@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Các số là bội chung của 3 và 5: <span id="bsc"></span>
+<br>
+Tổng của các bội số chung của 3 và 5 là: <span id="sum"></span>
+<script>
+    var arr = [2,5,1,7,9,10,25,30,28,27,54,18,0,4, 60];
+    var bsc_arr = [];
+    var tong = 0;
+    for(let i of arr){
+        if(i%3 === 0 && i % 5 === 0){
+            bsc_arr.push(i);
+            tong += i;
+        }
+    }
+    var a = document.getElementById("bsc");
+    a.innerText = bsc_arr.join();
+    var b = document.getElementById("sum");
+    b.innerText = tong;
+</script>
+</body>
+</html>

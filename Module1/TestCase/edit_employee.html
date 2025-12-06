@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh Sửa Thông Tin Nhân Viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>✏️ Chỉnh Sửa Thông Tin & Lương Nhân Viên</h1>
+    <nav>
+        <a href="index.html">← Quay lại Dashboard</a>
+    </nav>
+</header>
+
+<main>
+    <form id="edit_employee_form">
+        <h2>ID Nhân viên: <span id="employee_id_display"></span></h2>
+        <input type="hidden" id="emp_id">
+
+        <h3>Thông tin Cá nhân</h3>
+
+        <label for="emp_name">Họ và Tên:</label>
+        <input type="text" id="emp_name" required>
+
+        <label for="emp_position">Chức vụ:</label>
+        <input type="text" id="emp_position" required>
+
+        <label for="emp_address">Địa chỉ:</label>
+        <input type="text" id="emp_address">
+
+        <label for="emp_phone">Số điện thoại:</label>
+        <input type="tel" id="emp_phone">
+
+        <label for="emp_email">Email:</label>
+        <input type="email" id="emp_email">
+
+        <h3>Quản lý Lương</h3>
+        <label for="emp_salary">Lương cơ bản (VNĐ):</label>
+        <input type="number" id="emp_salary" required min="0">
+
+        <button type="submit" class="submit-btn">💾 Lưu Thay Đổi</button>
+    </form>
+</main>
+
+<script src="qlnv.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Lấy ID từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const employeeId = parseInt(urlParams.get('id'));
+
+        // 2. Tìm kiếm nhân viên bằng ID
+        const danhSach = taiDanhSachNV();
+        const employee = danhSach.find(emp => emp.id === employeeId);
+
+        if (!employee) {
+            alert("Không tìm thấy nhân viên này!");
+            window.location.href = "index.html";
+            return;
+        }
+
+        // 3. Đổ dữ liệu vào Form
+        document.getElementById('employee_id_display').textContent = employee.id;
+        document.getElementById('emp_id').value = employee.id;
+        document.getElementById('emp_name').value = employee.name;
+        document.getElementById('emp_position').value = employee.position;
+        document.getElementById('emp_address').value = employee.address;
+        document.getElementById('emp_phone').value = employee.phone;
+        document.getElementById('emp_email').value = employee.email;
+        document.getElementById('emp_salary').value = employee.baseSalary;
+
+        // 4. Xử lý sự kiện Submit Form
+        document.getElementById('edit_employee_form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Lấy dữ liệu đã chỉnh sửa
+            const updatedData = {
+                id: employeeId, // Giữ nguyên ID
+                name: document.getElementById('emp_name').value,
+                phone: document.getElementById('emp_phone').value,
+                address: document.getElementById('emp_address').value,
+                email: document.getElementById('emp_email').value,
+                position: document.getElementById('emp_position').value,
+                baseSalary: parseInt(document.getElementById('emp_salary').value)
+            };
+
+            // Gọi hàm cập nhật (chúng ta sẽ thêm hàm này vào script.js)
+            capNhatNhanVien(updatedData);
+
+            // Chuyển hướng về trang chính
+            window.location.href = "index.html";
+        });
+    });
+</script>
+</body>
+</html>

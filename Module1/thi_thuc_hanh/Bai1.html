@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập n: "));
+    if(!Number.isInteger(n)){
+        alert("Vui lòng nhập số nguyên n");
+    }
+    else if(n <= 0 || n > 50){
+        alert("Vui lòng nhập n hợp lệ trong khoảng [1,50]");
+    }
+    else{
+        let arr = [];
+        for(let i = 1; i <= n; i++){
+            let x = parseInt(prompt("Nhập số nguyên thứ " + i + " trong mảng:"));
+            arr.push(x);
+        }
+        if(arr.length !== n){
+            alert("Bạn phải nhập " + n + " số nguyên");
+        }
+        else{
+            alert("Mảng: " + arr.join());
+            let count = 0;
+            let sum = 0;
+            for(let i = 0; i < arr.length; i++){
+                if(arr[i] % 2 === 1 && i % 2 === 0){
+                    count += 1;
+                    sum += arr[i];
+                }
+            }
+            alert("Trung bình cộng các số lẻ ở vị trí chẵn là: " + sum/count);
+        }
+    }
+</script>
+</body>
+</html>

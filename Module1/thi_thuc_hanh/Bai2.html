@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Nhập số thứ nhất: <input type="text" id="stn"> <br>
+Nhập số thứ hai:  <input type="text" id="sth"> <br>
+<button type="submit" id="submit" onclick="kiem_tra(parseInt(document.getElementById('stn').value), parseInt(document.getElementById('sth').value))">Kiểm tra</button>
+<script>
+    function kiem_tra(st1, st2){
+        if(st1 === tong_uoc(st2) && st2 === tong_uoc(st1)){
+            alert("True");
+        }else{
+            alert("False");
+        }
+    }
+    function tong_uoc(x){
+        let sum = 0;
+        for(let i = 1; i <= x/2; i++){
+            if(x % i === 0){
+                sum += i;
+            }
+        }
+        return sum;
+    }
+</script>
+</body>
+</html>
