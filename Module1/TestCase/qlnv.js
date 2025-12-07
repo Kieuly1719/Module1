@@ -1,5 +1,5 @@
 class Employee {
-    constructor(id, name, phone, address, email, position, baseSalary){
+    constructor(id, name, phone, address, email, position, baseSalary, password){
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -7,8 +7,10 @@ class Employee {
         this.email = email;
         this.position = position || 'Staff';
         this.baseSalary = baseSalary || 0;
+        this.password = password || '123456';
     }
 }
+
 
 function taiDanhSachNV(){
     const jsonString = localStorage.getItem('danhSachNV');
@@ -17,8 +19,8 @@ function taiDanhSachNV(){
     }
 
     return[
-        {id: 101, name: "Trần Thị Kiều Ly", phone: "0329773944", address: "Quảng Nam",email: "kieuly@example.com", position: "Marketing Manager", baseSalary: 18000000 },
-        { id: 102, name: "Huỳnh Văn Quyền", phone: "0905821752", address: "Đà Nẵng", email: "quyen@example.com", position: "Software Developer", baseSalary: 25000000 }
+        {id: 101, name: "Trần Thị Kiều Ly", phone: "0329773944", address: "Quảng Nam",email: "kieuly@example.com", position: "Marketing Manager", baseSalary: 18000000, password: "101" },
+        { id: 102, name: "Huỳnh Văn Quyền", phone: "0905821752", address: "Đà Nẵng", email: "quyen@example.com", position: "Software Developer", baseSalary: 25000000, password: "123456@!" }
     ];
 }
 
@@ -107,7 +109,6 @@ function Hien_thi_danh_sach_nhan_vien(){
 }
 document.addEventListener("DOMContentLoaded", Hien_thi_danh_sach_nhan_vien);
 
-// --- QUẢN LÝ ĐƠN NGHỈ PHÉP ---
 let leaveRequests = [];
 function taiDanhSachNghiPhep(){
     const jsonString = localStorage.getItem('danhSachNghiPhep');
@@ -121,7 +122,6 @@ function luuDanhSachNghiPhep(list){
 }
 let danh_sach_nghi_phep = taiDanhSachNghiPhep();
 
-// Hàm chung để cập nhật trạng thái đơn nghỉ phép
 function capNhatTrangThaiNghiPhep(requestID, status){
     const index = danh_sach_nghi_phep.findIndex(req => req.requestId === requestID);
     if(index !== -1){
@@ -132,7 +132,6 @@ function capNhatTrangThaiNghiPhep(requestID, status){
     }
 }
 
-// Thay thế hàm pheDuyetNghiPhep cũ bằng hàm chung để linh hoạt hơn
 function pheDuyetNghiPhep(requestID){
     capNhatTrangThaiNghiPhep(requestID, "Approved");
 }
@@ -153,7 +152,6 @@ function Hien_thi_don_xin_phep() {
 
     tableBody.innerHTML = "";
 
-    // Sắp xếp: Ưu tiên đơn đang chờ duyệt lên đầu
     const danh_sach_moi = danh_sach_nghi_phep.slice().sort((a, b) => {
         if (a.status === "Pending" && b.status !== "Pending") return -1;
         if (a.status !== "Pending" && b.status === "Pending") return 1;
@@ -163,14 +161,12 @@ function Hien_thi_don_xin_phep() {
     for (let req of danh_sach_moi) {
         const row = tableBody.insertRow();
 
-        // 1. Hiển thị thông tin
         row.insertCell().textContent = req.requestId;
         row.insertCell().textContent = req.empId;
         row.insertCell().textContent = req.name;
         row.insertCell().textContent = `${req.from} đến ${req.to}`;
         row.insertCell().textContent = req.reason;
 
-        // 2. Hiển thị Trạng thái (Tô màu trạng thái)
         const statusCell = row.insertCell();
         statusCell.textContent = req.status;
         if (req.status === 'Pending') {
@@ -181,11 +177,9 @@ function Hien_thi_don_xin_phep() {
             statusCell.style.color = 'red';
         }
 
-        // 3. Hiển thị Thao tác
         const actionCell = row.insertCell();
 
         if (req.status === 'Pending') {
-            // Nút Phê duyệt
             const approveButton = document.createElement("button");
             approveButton.textContent = "✅ Phê duyệt";
             approveButton.classList.add("action-btn", 'approve-btn');
@@ -193,7 +187,6 @@ function Hien_thi_don_xin_phep() {
                 pheDuyetNghiPhep(req.requestId);
             };
 
-            // Nút Từ chối
             const rejectButton = document.createElement("button");
             rejectButton.textContent = "❌ Từ chối";
             rejectButton.classList.add("action-btn", 'reject-btn');
@@ -209,5 +202,24 @@ function Hien_thi_don_xin_phep() {
     }
 }
 
-// Thêm lệnh gọi hàm hiển thị đơn nghỉ phép khi tải trang
 document.addEventListener("DOMContentLoaded", Hien_thi_don_xin_phep);
+
+function nopDonNghiPhep(empId, empName, from, to, reason) {
+    let danh_sach = taiDanhSachNghiPhep();
+
+    const newRequestId = danh_sach.length > 0 ? Math.max(...danh_sach.map(req => req.requestId)) + 1 : 1;
+
+    const newRequest = {
+        requestId: newRequestId,
+        empId: empId,
+        name: empName,
+        from: from,
+        to: to,
+        reason: reason,
+        status: "Pending"
+    };
+
+    danh_sach.push(newRequest);
+    luuDanhSachNghiPhep(danh_sach);
+
+}

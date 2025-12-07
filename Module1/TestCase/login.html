@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập Nhân viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>ĐĂNG NHẬP HỆ THỐNG</h1></header>
+<main>
+    <form id="login_form" class="simple-form">
+
+        <label for="login_email">Email:</label>
+        <input type="email" id="login_email" required>
+
+        <label for="login_password">Mật khẩu:</label>
+        <input type="password" id="login_password" required>
+
+        <button type="submit" class="submit-btn">Đăng nhập</button>
+        <p id="login_error" style="color: red; margin-top: 10px;"></p>
+    </form>
+    <div style="margin-top: 20px;">
+        <a href="index.html">Đăng nhập với quyền Admin</a>
+    </div>
+</main>
+
+<script src="qlnv.js"></script>
+<script>
+    document.getElementById('login_form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('login_email').value.trim();
+        const password = document.getElementById('login_password').value.trim();
+
+        console.log("--- BẮT ĐẦU ĐĂNG NHẬP ---");
+        console.log("Email nhập vào:", email);
+        console.log("Password nhập vào:", password);
+
+        const danhSach = taiDanhSachNV();
+
+        const employee = danhSach.find(emp => emp.email === email && emp.password === password);
+
+        if (employee) {
+            console.log("Đăng nhập thành công! ID:", employee.id);
+            sessionStorage.setItem('currentUserId', employee.id);
+            window.location.href = 'employee_dashboard.html';
+        } else {
+            console.log("Đăng nhập thất bại. Không tìm thấy nhân viên khớp.");
+            document.getElementById('login_error').textContent = 'Email hoặc mật khẩu không đúng.';
+        }
+    });
+</script>
+</body>
+</html>

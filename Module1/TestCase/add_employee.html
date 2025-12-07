@@ -46,13 +46,12 @@
     </form>
 </main>
 
-<script src="script.js"></script>
+<script src="qlnv.js"></script>
 
 <script>
     document.getElementById('add_employee_form').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Lấy dữ liệu từ Form
         const id = parseInt(document.getElementById('emp_id').value);
         const name = document.getElementById('emp_name').value;
         const phone = document.getElementById('emp_phone').value;
@@ -61,10 +60,8 @@
         const position = document.getElementById('emp_position').value;
         const baseSalary = parseInt(document.getElementById('emp_salary').value);
 
-        // Gọi hàm thêm nhân viên từ script.js
         themNhanVien(id, name, phone, address, email, position, baseSalary);
 
-        // Sau khi thêm thành công, chuyển về trang danh sách
         window.location.href = "index.html";
     });
 </script>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Nhân viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1 id="welcome_message">Chào mừng, [Tên Nhân viên]</h1>
+    <nav>
+        <a href="#" onclick="logout()">Đăng xuất</a>
+    </nav>
+</header>
+
+<main>
+    <section id="profile_section">
+        <h2>👤 Thông tin Cá nhân</h2>
+        <div id="profile_details"></div>
+        <button onclick="toggleEditMode()" id="edit_toggle_btn">Chỉnh sửa/Đổi MK</button>
+
+        <form id="edit_profile_form" style="display: none; margin-top: 20px;">
+            <h3>Chỉnh sửa Thông tin</h3>
+            <label for="emp_name_edit">Tên (Không sửa):</label>
+            <input type="text" id="emp_name_edit" disabled>
+
+            <label for="emp_phone_edit">SĐT:</label>
+            <input type="tel" id="emp_phone_edit">
+
+            <label for="emp_email_edit">Email:</label>
+            <input type="email" id="emp_email_edit">
+
+            <label for="emp_address_edit">Địa chỉ:</label>
+            <input type="text" id="emp_address_edit">
+
+            <h3>Đổi Mật khẩu</h3>
+            <label for="old_password">Mật khẩu cũ:</label>
+            <input type="password" id="old_password" required>
+
+            <label for="new_password">Mật khẩu mới:</label>
+            <input type="password" id="new_password" required>
+
+            <button type="submit" class="submit-btn">Lưu và Đổi MK</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section id="leave_request_section">
+        <h2>📝 Nộp Đơn Xin Nghỉ Phép</h2>
+        <form id="submit_leave_form">
+            <label for="leave_from">Từ ngày:</label>
+            <input type="date" id="leave_from" required>
+
+            <label for="leave_to">Đến ngày:</label>
+            <input type="date" id="leave_to" required>
+
+            <label for="leave_reason">Lý do:</label>
+            <textarea id="leave_reason" required></textarea>
+
+            <button type="submit" class="submit-btn">Gửi Đơn</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section id="salary_slip_section">
+        <h2>💰 Phiếu Lương Gần Nhất</h2>
+        <div id="salary_details"></div>
+    </section>
+
+    <hr>
+
+    <section id="leave_history_section">
+        <h2>Lịch sử Đơn nghỉ phép đã nộp</h2>
+        <table>
+            <thead>
+            <tr><th>Từ</th><th>Đến</th><th>Lý do</th><th>Trạng thái</th></tr>
+            </thead>
+            <tbody id="my_leave_history">
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<script src="qlnv.js"></script>
+<script>
+    // --- LOGIC CHUNG ---
+    const currentUserId = parseInt(sessionStorage.getItem('currentUserId'));
+    let currentUser;
+
+    function checkAuth() {
+        if (!currentUserId) {
+            window.location.href = 'login.html';
+            return false;
+        }
+        const danhSach = taiDanhSachNV();
+        currentUser = danhSach.find(emp => emp.id === currentUserId);
+        if (!currentUser) {
+            window.location.href = 'login.html';
+            return false;
+        }
+        document.getElementById('welcome_message').textContent = `Chào mừng, ${currentUser.name}`;
+        return true;
+    }
+
+    function logout() {
+        sessionStorage.removeItem('currentUserId');
+        window.location.href = 'login.html';
+    }
+
+    function displayProfile() {
+        const detailDiv = document.getElementById('profile_details');
+        detailDiv.innerHTML = `
+                <p><strong>ID:</strong> ${currentUser.id}</p>
+                <p><strong>Tên:</strong> ${currentUser.name}</p>
+                <p><strong>Chức vụ:</strong> ${currentUser.position}</p>
+                <p><strong>SĐT:</strong> ${currentUser.phone}</p>
+                <p><strong>Email:</strong> ${currentUser.email}</p>
+                <p><strong>Địa chỉ:</strong> ${currentUser.address}</p>
+            `;
+
+        document.getElementById('emp_name_edit').value = currentUser.name;
+        document.getElementById('emp_phone_edit').value = currentUser.phone;
+        document.getElementById('emp_email_edit').value = currentUser.email;
+        document.getElementById('emp_address_edit').value = currentUser.address;
+    }
+
+    function toggleEditMode() {
+        const form = document.getElementById('edit_profile_form');
+        const btn = document.getElementById('edit_toggle_btn');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+            btn.textContent = 'Ẩn Form Chỉnh Sửa';
+        } else {
+            form.style.display = 'none';
+            btn.textContent = 'Chỉnh sửa/Đổi MK';
+        }
+    }
+
+    document.getElementById('edit_profile_form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const oldPass = document.getElementById('old_password').value;
+        const newPass = document.getElementById('new_password').value;
+
+        if (oldPass !== currentUser.password) {
+            alert("Mật khẩu cũ không đúng!");
+            return;
+        }
+
+        const updatedUser = {
+            ...currentUser, // Giữ lại các thuộc tính cũ
+            phone: document.getElementById('emp_phone_edit').value,
+            email: document.getElementById('emp_email_edit').value,
+            address: document.getElementById('emp_address_edit').value,
+            password: newPass // Cập nhật mật khẩu mới
+        };
+
+        capNhatNhanVien(updatedUser); // Sử dụng hàm Admin đã viết
+        alert("Cập nhật thông tin và mật khẩu thành công!");
+        window.location.reload(); // Tải lại trang để cập nhật giao diện
+    });
+
+    // --- CHỨC NĂNG NỘP ĐƠN NGHỈ PHÉP ---
+    document.getElementById('submit_leave_form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const from = document.getElementById('leave_from').value;
+        const to = document.getElementById('leave_to').value;
+        const reason = document.getElementById('leave_reason').value;
+
+        nopDonNghiPhep(currentUserId, currentUser.name, from, to, reason);
+
+        alert("Đơn nghỉ phép đã được gửi đi. Vui lòng đợi Admin phê duyệt.");
+        e.target.reset(); // Xóa form
+        displayLeaveHistory(); // Cập nhật lịch sử
+    });
+
+    function displaySalarySlip() {
+        const slipDiv = document.getElementById('salary_details');
+        const grossSalary = currentUser.baseSalary;
+        const taxRate = 0.1; // Thuế (Mô phỏng 10%)
+        const tax = grossSalary * taxRate;
+        const netSalary = grossSalary - tax;
+
+        slipDiv.innerHTML = `
+                <p><strong>Tháng:</strong> ${new Date().getMonth() + 1}/${new Date().getFullYear()}</p>
+                <p><strong>Lương Cơ Bản:</strong> ${grossSalary.toLocaleString('vi-VN')} VNĐ</p>
+                <p><strong>Thuế (10% mô phỏng):</strong> ${tax.toLocaleString('vi-VN')} VNĐ</p>
+                <p style="font-size: 1.2em; color: green;"><strong>THỰC LĨNH:</strong> ${netSalary.toLocaleString('vi-VN')} VNĐ</p>
+            `;
+    }
+
+    // --- LỊCH SỬ NGHỈ PHÉP ---
+    function displayLeaveHistory() {
+        const tableBody = document.getElementById("my_leave_history");
+        tableBody.innerHTML = '';
+
+        const danh_sach_nghi_phep = taiDanhSachNghiPhep();
+        const myRequests = danh_sach_nghi_phep.filter(req => req.empId === currentUserId);
+
+        myRequests.forEach(req => {
+            const row = tableBody.insertRow();
+            row.insertCell().textContent = req.from;
+            row.insertCell().textContent = req.to;
+            row.insertCell().textContent = req.reason;
+            row.insertCell().textContent = req.status;
+        });
+    }
+
+    // --- KHỞI CHẠY ---
+    if (checkAuth()) {
+        displayProfile();
+        displaySalarySlip();
+        displayLeaveHistory();
+    }
+</script>
+</body>
+</html>
